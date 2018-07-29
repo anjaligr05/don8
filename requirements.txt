@@ -1,0 +1,14 @@
+click==6.7
+Django==1.10.4
+Flask==0.12.2
+itsdangerous==0.24
+Jinja2==2.9.6
+markdown2==2.3.2
+MarkupSafe==1.0
+virtualenv==15.1.0
+Werkzeug==0.12.2
+Cryptography
+Flask-Bcrypt
+Flask-Login
+Flask-Wtf
+peewee

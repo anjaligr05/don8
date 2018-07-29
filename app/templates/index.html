@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}Don8{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/css/normalize.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script>window.html5 || document.write('<script src="/static/js/vendor/html5shiv.js"><\/script>')</script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <header class="home-page">
+
+          <div class="banner">
+
+            <div class="grid-25">
+
+
+                <a href="{{ url_for('index') }}" class="home-logo"></a> 
+
+            </div>
+
+            <div class="grid-50">
+
+                <h1 class="hide">Hi{% if current_user.is_authenticated %} {{ current_user.username }}{% endif %}, Welcome</h1>
+
+            </div>
+
+            <div class="grid-25">
+
+                <!-- Log in/Log out -->
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="log-in-out" title="Log out"></a>
+                <a href="#" title="Inbox">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><g><path fill="#fff" d="M83.75,11.187h-67.5c-7.443,0-13.501,6.058-13.501,13.501v50.625c0,7.443,6.058,13.501,13.501,13.501h67.5    c7.443,0,13.501-6.058,13.501-13.501V24.688C97.251,17.244,91.193,11.187,83.75,11.187z M92.749,24.688    c0,0.77-0.103,1.523-0.288,2.251c-0.547,2.119-1.854,3.994-3.726,5.244L67.461,46.367l-1.875,1.248l-1.87,1.247l-8.73,5.82    c-2.954,1.97-7.017,1.97-9.971,0l-8.73-5.82l-1.87-1.247l-1.875-1.248L11.265,32.183c-1.872-1.25-3.179-3.125-3.726-5.244    c-0.186-0.728-0.288-1.481-0.288-2.251c0-0.781,0.132-1.525,0.317-2.251c1.006-3.87,4.502-6.748,8.682-6.748h67.5    c4.18,0,7.676,2.878,8.682,6.748C92.617,23.162,92.749,23.906,92.749,24.688z M83.75,84.312h-67.5c-1.639,0-3.154-0.472-4.48-1.24    l21.893-30.547l8.857,5.903c2.219,1.479,4.805,2.261,7.48,2.261s5.262-0.781,7.48-2.261l8.857-5.903L88.23,83.071    C86.904,83.84,85.389,84.312,83.75,84.312z M8.77,35.928l21.147,14.097L8.53,79.865c-0.794-1.34-1.279-2.885-1.279-4.553V34.734    C7.727,35.161,8.228,35.566,8.77,35.928z M92.749,75.312c0,1.668-0.485,3.213-1.279,4.553L70.083,50.024L91.23,35.928    c0.542-0.361,1.043-0.767,1.519-1.193V75.312z"/></g></g></svg>
+              </a>
+                {% else %}
+                <a href="{{ url_for('login') }}" class="log-in-out" title="Log in"></a>
+                <a href="/register" class="_aj7mu _white-button _kenyh _o0442 slide-right">Sign up</a>
+                {% endif %}
+
+            </div>
+
+          </div>
+          <div id="communicate" class="detail" data-highlight="dm">
+		<section>
+
+			<h1 class="headline white">
+				<div>Don8 is all about giving a hand up to those in need.</div>
+			<img src = "/static/Logo.png" id="logo"/>
+		</section>
+</div>
+
+        </header>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="notification {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="row">
+
+          <div class="main">
+
+            <nav>
+
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('discover') }}" class="current">DONATE/DISCOVER ITEMS</a> <!--changed from url_for('index')-->
+                <a href="{{ url_for('post') }}" class="new">Create New Post</a>
+                {% endif %}
+              <div class="tier feedback white-text tier-space-8 tier-space-top-4">
+                                  <div class="col-8 hire-frame">
+                                    <div class="h3 icon-white pull-left" style="">
+                                      Individual or Non Profit ? <bold><em></em></bold>
+                                    </div>
+                                  </div>
+                                  <div class="col-for-hire hire-frame">
+                                    <a href="/discover" class="btn btn-red">
+                                      Explore
+                                    </a>
+                                  </div>
+                                </div>
+
+            </nav>
+
+          </div><br>
+          {% if current_user.is_authenticated %}
+          <!----Added to display company news/current project---->
+<div class="_76rrx _yo2b4"><p class="_27u4n">Ads</p>
+<iframe src="https://player.vimeo.com/video/101669718?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+
+  </div>
+          {% endif %}
+
+        </div>
+
+        <script src="/static/js/vendor/disTime.min.js"></script>
+        <script src="/static/js/main.js"></script>
+
+    </body>
+</html>

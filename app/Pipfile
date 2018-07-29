@@ -1,0 +1,17 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+
+[packages]
+
+django = "*"
+gunicorn = "*"
+django-heroku = "*"
+cryptography = "*"
+
+
+[requires]
+
+python_version = "2.7"
