@@ -1,3 +1,3 @@
-Hackathon 2018
+Girls in Tech Hackathon 2018
 
 
